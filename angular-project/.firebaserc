@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularcoursebyvaxi": {
+      "hosting": {
+        "angular-project": [
+          "angularcoursebyvaxi"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularcoursebyvaxi"
+  }
+}

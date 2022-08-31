@@ -8,6 +8,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 //This is used for Date range (APP_DATE_FORMATS)
 const APP_DATE_FORMATS: MatDateFormats = {
@@ -32,7 +38,12 @@ const APP_DATE_FORMATS: MatDateFormats = {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
-    NotificationModule.forRoot() //this is used for date range
+    NotificationModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage()) //this is used for date range
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, //this is used for date range component,
